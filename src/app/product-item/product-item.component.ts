@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Product } from 'src/models/Product';
 
 @Component({
@@ -8,6 +8,7 @@ import { Product } from 'src/models/Product';
 })
 export class ProductItemComponent implements OnInit {
   @Input() product: Product;
+
   constructor() {
     this.product = {
       id: 0,
@@ -20,4 +21,13 @@ export class ProductItemComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  addItemToCart(product: Product): void {
+    alert('added item to cart');
+  }
+
+  getProductDetails(product: Product) {
+    console.log(product);
+    return product;
+  }
 }

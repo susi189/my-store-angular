@@ -1,0 +1,29 @@
+<section class="container">
+  <div class="content">
+    <div class="image">
+      <img src="{{ product.url }}" />
+    </div>
+    <div class="product-details">
+      <h4>{{ product.name }}</h4>
+      <p>{{ product.price }}</p>
+      <p>{{ product.description }}</p>
+      <select class="form-select">
+        <option selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button
+        (click)="addItemToCart(product)"
+        type="button"
+        class="btn btn-primary"
+      >
+        Add to cart
+      </button>
+      <br />
+      <div class="link"><a routerLink="/"> &larr; Back to product list</a></div>
+    </div>
+  </div>
+</section>

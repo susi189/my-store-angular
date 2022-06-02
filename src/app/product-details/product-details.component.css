@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 6rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.product-details {
+  padding-left: 6rem;
+}
+
+.image > img {
+  width: 300px;
+  border-radius: 15px;
+}
+
+select {
+  margin-bottom: 16px;
+  width: 108px;
+}
+
+.link {
+  margin-top: 16px;
+}
+
+a {
+  text-decoration: none;
+  font-size: small;
+}
+
+a:hover {
+  color: blue;
+}
