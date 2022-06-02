@@ -1,9 +1,5 @@
 <div class="product-item">
-  <img
-    routerLink="/product"
-    (click)="getProductDetails(product)"
-    src="{{ product.url }}"
-  />
+  <img (click)="getProductDetails(product)" src="{{ product.url }}" />
   <h4>{{ product.name }}</h4>
   <p>{{ product.price }}</p>
   <select class="form-select">

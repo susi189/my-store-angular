@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Product } from 'src/models/Product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-item',
@@ -9,7 +10,7 @@ import { Product } from 'src/models/Product';
 export class ProductItemComponent implements OnInit {
   @Input() product: Product;
 
-  constructor() {
+  constructor(private router: Router) {
     this.product = {
       id: 0,
       name: '',
@@ -28,6 +29,7 @@ export class ProductItemComponent implements OnInit {
 
   getProductDetails(product: Product) {
     console.log(product);
-    return product;
+    const pid = product.id.toString();
+    this.router.navigate(['/product'], { queryParams: { id: pid } });
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/models/Product';
 import { ProductService } from '../services/product.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -10,8 +11,12 @@ import { ProductService } from '../services/product.service';
 export class ProductDetailsComponent implements OnInit {
   products: Product[] = [];
   product: Product;
+  id: number;
 
-  constructor(private productService: ProductService) {
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute
+  ) {
     this.product = {
       id: 0,
       name: '',
@@ -20,11 +25,20 @@ export class ProductDetailsComponent implements OnInit {
       description: '',
       quantity: 1,
     };
+    this.id = 0;
   }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      let pid = params['id'];
+      this.id = parseInt(pid);
+    });
     this.productService.getProducts().subscribe((res) => {
-      this.product = res[0];
+      for (let i = 0; i < res.length; i++) {
+        if (res[i].id === this.id) {
+          this.product = res[i];
+        }
+      }
     });
   }
 
