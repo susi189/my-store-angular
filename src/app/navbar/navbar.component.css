@@ -1,0 +1,9 @@
+a {
+  text-decoration: none;
+  padding: 0 1rem;
+  color: black;
+}
+
+a:hover {
+  font-weight: 500;
+}

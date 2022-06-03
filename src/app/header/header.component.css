@@ -1,7 +1,11 @@
 .header {
+  display: flex;
+  justify-content: space-between;
   background-color: rgb(181, 181, 230);
-  text-align: start;
   padding: 1.5rem 3rem;
+  position: fixed;
+  top: 0px;
+  width: 100%;
 }
 
 h1 {
