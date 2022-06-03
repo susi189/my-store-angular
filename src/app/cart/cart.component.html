@@ -1,1 +1,82 @@
-<p>cart works!</p>
+<section class="container">
+  <div class="order-items" *ngFor="let item of items">
+    <div class="image">
+      <img src="{{ item.url }}" />
+    </div>
+    <h4>{{ item.name }}</h4>
+    <p>{{ item.price }}</p>
+    <span
+      >Amount: {{ item.quantity }}
+      <select class="form-select">
+        <option selected>{{ item.quantity }}</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </span>
+  </div>
+  <div class="form">
+    <form class="row g-3">
+      <div class="col-12">
+        <label for="name" class="form-label">Full name</label>
+        <input type="name" class="form-control" id="name" />
+      </div>
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">Address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputAddress"
+          placeholder="1234 Main St"
+        />
+      </div>
+      <div class="col-12">
+        <label for="inputAddress2" class="form-label">Address 2</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputAddress2"
+          placeholder="Apartment, studio, or floor"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="inputCity" class="form-label">City</label>
+        <input type="text" class="form-control" id="inputCity" />
+      </div>
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">State</label>
+        <select id="inputState" class="form-select">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label for="inputZip" class="form-label">Zip</label>
+        <input type="text" class="form-control" id="inputZip" />
+      </div>
+      <div class="col-md-6">
+        <label for="cardNumber" class="form-label">Card number</label>
+        <input type="text" class="form-control" id="cardNumber" />
+      </div>
+      <div class="col-md-4">
+        <label for="expDate" class="form-label">Expires</label>
+        <input
+          type="text"
+          class="form-control"
+          id="expDate"
+          placeholder="mm/yyyy"
+        />
+      </div>
+      <div class="col-md-2">
+        <label for="cvv" class="form-label">CVV</label>
+        <input type="text" class="form-control" id="cvv" />
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Complete Order</button>
+      </div>
+    </form>
+    <div class="total">Total:</div>
+  </div>
+</section>
