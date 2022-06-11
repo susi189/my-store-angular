@@ -10,8 +10,6 @@ import { ProductService } from '../../../services/product.service';
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
 
-  //here we can inject the service as a dependency in the constuctor
-
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {

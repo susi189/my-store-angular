@@ -9,14 +9,6 @@ import { CustomerInfoService } from 'src/app/services/customer-info.service';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent implements OnInit {
-  // name: string = "";
-  // address: string = '';
-  // inputCity: string = '';
-  // inputState: string = '';
-  // inputZip: string = '';
-  // cardNumber: string = '';
-  // expDate: string = '';
-  // cvv: string = '';
   customer: Customer;
   constructor(
     private router: Router,
