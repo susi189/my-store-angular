@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Product } from 'src/models/Product';
-import { ProductService } from '../services/product.service';
-import { OrderService } from '../services/order.service';
+import { ProductService } from '../../../services/product.service';
+import { OrderService } from '../../../services/order.service';
 
 @Component({
   selector: 'app-product-details',
@@ -13,6 +13,7 @@ import { OrderService } from '../services/order.service';
 export class ProductDetailsComponent implements OnInit {
   products: Product[] = [];
   product: Product;
+  quantity: number;
   id: number;
 
   constructor(
@@ -29,6 +30,7 @@ export class ProductDetailsComponent implements OnInit {
       quantity: 1,
     };
     this.id = 0;
+    this.quantity = 0;
   }
 
   ngOnInit(): void {
@@ -46,7 +48,12 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addItemToCart(product: Product): void {
-    this.order.addItemToCart(product);
-    alert(`${product.name} was added to your cart`);
+    if (!this.order.checkItems(product)) {
+      product.quantity = this.quantity;
+      this.order.addItemToCart(product);
+      alert(`You added ${product.name} to your cart`);
+    } else {
+      alert('Item already in cart');
+    }
   }
 }

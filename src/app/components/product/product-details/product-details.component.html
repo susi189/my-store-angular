@@ -5,10 +5,9 @@
     </div>
     <div class="product-details">
       <h4>{{ product.name }}</h4>
-      <p>{{ product.price }}</p>
+      <p>&dollar;{{ product.price }}</p>
       <p>{{ product.description }}</p>
-      <select class="form-select">
-        <option selected>0</option>
+      <select class="form-select" type="number" [(ngModel)]="quantity">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>

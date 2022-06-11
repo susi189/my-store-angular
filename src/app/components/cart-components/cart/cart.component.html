@@ -1,0 +1,38 @@
+<section class="container">
+  <div class="order-details">
+    <div class="empty" *ngIf="items.length === 0">
+      <p>Your cart is empty</p>
+    </div>
+    <div class="order-items">
+      <div class="single-item" *ngFor="let item of items">
+        <div class="image">
+          <img src="{{ item.url }}" />
+        </div>
+        <div class="details">
+          <h5>{{ item.name }}</h5>
+          <p>{{ item.price }}</p>
+          <div class="inputs">
+            <label for="amount" class="form-label">Amount: </label>
+            <input
+              type="number"
+              name="amount"
+              min="0"
+              [(ngModel)]="item.quantity"
+              (ngModelChange)="updateQuantity(item)"
+            />
+          </div>
+          <button
+            class="btn btn-secondary btn-sm"
+            (click)="removeItemInCart(item)"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-form></app-form>
+
+  <div class="total">Total: &dollar;{{ total }}</div>
+</section>
