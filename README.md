@@ -36,10 +36,10 @@ Components structure
    - Header
      - Navbar
    - Product List
-   - Product Item
-   - Product Details
+     - Product Item
+     - Product Details
    - Cart
-   - Form
+     - Form
    - Submit page
 
 ### Services
