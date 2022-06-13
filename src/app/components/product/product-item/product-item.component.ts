@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Product } from 'src/models/Product';
@@ -12,6 +12,9 @@ import { OrderService } from '../../../services/order.service';
 export class ProductItemComponent implements OnInit {
   @Input() product: Product;
   quantity: number;
+  inCart: boolean = false;
+
+  @Output() addedToCart = new EventEmitter<boolean>();
 
   constructor(private router: Router, private order: OrderService) {
     this.product = {
@@ -37,9 +40,10 @@ export class ProductItemComponent implements OnInit {
     if (!this.order.checkItems(product)) {
       product.quantity = this.quantity;
       this.order.addItemToCart(product);
-      alert(`You added ${product.name} to your cart`);
+      this.inCart = true;
     } else {
-      alert('Item already in cart');
+      this.inCart = false;
     }
+    this.addedToCart.emit(this.inCart);
   }
 }

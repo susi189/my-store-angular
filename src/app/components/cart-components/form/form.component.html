@@ -1,7 +1,7 @@
 <div class="form">
   <form #form="ngForm" class="row g-3" (ngSubmit)="submitOrder(customer)">
     <div class="col-12">
-      <label for="name" class="form-label">Full name</label>
+      <label for="name" class="form-label">Full name*</label>
       <input
         type="text"
         class="form-control"
@@ -9,11 +9,18 @@
         minlength="4"
         placeholder="Max Mustermann"
         [(ngModel)]="customer.name"
+        #name="ngModel"
         required
       />
+      <div class="error" *ngIf="name.invalid && name.touched">
+        <div *ngIf="name.errors?.['required']">Please enter your full name</div>
+        <div *ngIf="name.errors?.['minlength']">
+          The name must have at least 4 characters
+        </div>
+      </div>
     </div>
     <div class="col-12">
-      <label for="address" class="form-label">Address</label>
+      <label for="address" class="form-label">Address*</label>
       <input
         type="text"
         class="form-control"
@@ -21,44 +28,65 @@
         placeholder="1234 Main St, Apt.123"
         minlength="5"
         [(ngModel)]="customer.address"
+        #address="ngModel"
         required
       />
+      <div class="error" *ngIf="address.invalid && address.touched">
+        <div *ngIf="address.errors?.['required']">
+          Please enter your address
+        </div>
+        <div *ngIf="address.errors?.['minlength']">
+          The address must have at least 5 characters
+        </div>
+      </div>
     </div>
     <div class="col-md-6">
-      <label for="inputCity" class="form-label">City</label>
+      <label for="city" class="form-label">City*</label>
       <input
         type="text"
         class="form-control"
-        name="inputCity"
-        [(ngModel)]="customer.inputCity"
+        name="city"
+        [(ngModel)]="customer.city"
         required
+        #city="ngModel"
       />
+      <div class="error" *ngIf="city.invalid && city.touched">
+        <div *ngIf="city.errors?.['required']">Please enter valid city</div>
+      </div>
     </div>
     <div class="col-md-4">
-      <label for="inputState" class="form-label">State</label>
+      <label for="state" class="form-label">State*</label>
       <select
-        name="inputState"
+        name="state"
         class="form-select"
-        [(ngModel)]="customer.inputState"
+        [(ngModel)]="customer.state"
+        #state="ngModel"
         required
       >
-        <option selected>Choose</option>
+        <option selected>Choose*</option>
         <option>NY</option>
         <option>NJ</option>
       </select>
+      <div class="error" *ngIf="state.invalid && state.touched">
+        <div *ngIf="state.errors?.['required']">Please choose your state</div>
+      </div>
     </div>
     <div class="col-md-2">
-      <label for="inputZip" class="form-label">Zip</label>
+      <label for="inputZip" class="form-label">Zip*</label>
       <input
         type="text"
         class="form-control"
         name="inputZip"
-        [(ngModel)]="customer.inputZip"
+        [(ngModel)]="customer.zip"
+        #zip="ngModel"
         required
       />
+      <div class="error" *ngIf="zip.invalid && zip.touched">
+        <div *ngIf="zip.errors?.['required']">Please enter your zip</div>
+      </div>
     </div>
     <div class="col-md-6">
-      <label for="cardNumber" class="form-label">Card number</label>
+      <label for="cardNumber" class="form-label">Card number*</label>
       <input
         type="text"
         class="form-control"
@@ -66,29 +94,51 @@
         maxlength="16"
         name="cardNumber"
         [(ngModel)]="customer.cardNumber"
+        #card="ngModel"
         required
       />
+      <div class="error" *ngIf="card.invalid && card.touched">
+        <div *ngIf="card.errors?.['required']">
+          Please enter valid card number
+        </div>
+        <div *ngIf="card.errors?.['minlength']">
+          The card must have at least 15 characters
+        </div>
+      </div>
     </div>
     <div class="col-md-4">
-      <label for="expDate" class="form-label">Expires</label>
+      <label for="expDate" class="form-label">Expires*</label>
       <input
         type="text"
         class="form-control"
         name="expDate"
         placeholder="mm/yyyy"
         [(ngModel)]="customer.expDate"
+        #exp="ngModel"
         required
       />
+      <div class="error" *ngIf="exp.invalid && exp.touched">
+        <div *ngIf="exp.errors?.['required']">
+          Please enter valid card number
+        </div>
+      </div>
     </div>
     <div class="col-md-2">
-      <label for="cvv" class="form-label">CVV</label>
+      <label for="cvv" class="form-label">CVV*</label>
       <input
         type="text"
         class="form-control"
         name="cvv"
         [(ngModel)]="customer.cvv"
+        #cvv="ngModel"
       />
+      <div class="error" *ngIf="cvv.invalid && cvv.touched">
+        <div *ngIf="cvv.errors?.['required']">
+          Please enter valid card number
+        </div>
+      </div>
     </div>
+    <div class="add-info">*Required fields</div>
     <div class="col-12">
       <input
         type="submit"

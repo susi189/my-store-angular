@@ -2,5 +2,6 @@
   <app-product-item
     *ngFor="let product of products"
     [product]="product"
+    (addedToCart)="addedToCartAlert($event, product)"
   ></app-product-item>
 </section>

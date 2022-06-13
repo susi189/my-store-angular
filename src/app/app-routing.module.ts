@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'product', component: ProductDetailsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'submit', component: SubmitPageComponent },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

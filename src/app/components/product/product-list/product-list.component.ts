@@ -21,4 +21,12 @@ export class ProductListComponent implements OnInit {
       this.products = res;
     });
   }
+
+  addedToCartAlert($event: boolean, product: Product): void {
+    if ($event) {
+      alert(`You added ${product.name} to your cart`);
+    } else {
+      alert('Item already in cart');
+    }
+  }
 }

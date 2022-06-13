@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Product } from 'src/models/Product';
@@ -11,10 +11,12 @@ import { OrderService } from '../../../services/order.service';
   styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
-  products: Product[] = [];
-  product: Product;
+  @Input() product: Product;
   quantity: number;
   id: number;
+  inCart: boolean = false;
+
+  @Output() addedToCart = new EventEmitter<boolean>();
 
   constructor(
     private productService: ProductService,
@@ -30,7 +32,7 @@ export class ProductDetailsComponent implements OnInit {
       quantity: 1,
     };
     this.id = 0;
-    this.quantity = 0;
+    this.quantity = 1;
   }
 
   ngOnInit(): void {

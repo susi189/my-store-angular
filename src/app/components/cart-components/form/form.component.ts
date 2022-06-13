@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { Customer } from 'src/models/Customer';
 import { CustomerInfoService } from 'src/app/services/customer-info.service';
 
@@ -10,16 +11,18 @@ import { CustomerInfoService } from 'src/app/services/customer-info.service';
 })
 export class FormComponent implements OnInit {
   customer: Customer;
+
   constructor(
     private router: Router,
+
     private customerInfo: CustomerInfoService
   ) {
     this.customer = {
       name: '',
       address: '',
-      inputCity: '',
-      inputState: '',
-      inputZip: '',
+      city: '',
+      state: '',
+      zip: '',
       cardNumber: '',
       expDate: '',
       cvv: '',

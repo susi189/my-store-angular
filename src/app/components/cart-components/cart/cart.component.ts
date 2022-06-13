@@ -28,5 +28,6 @@ export class CartComponent implements OnInit {
     this.order.removeItem(product);
     this.items = this.order.getItems();
     this.total = this.order.getTotal();
+    alert(`You removed ${product.name} from your cart`);
   }
 }
