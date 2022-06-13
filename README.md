@@ -33,14 +33,14 @@ This is an mockup store with basic functionality of an online store:
 Components structure
 
 1. App
-   1.1. Header
-   1.1.1. Navbar
-   1.2. Product List
-   1.2.1. Product Item
-   1.2.2. Product Details
-   1.3. Cart
-   1.3.1. Form
-   1.4. Submit page
+   - Header
+   - - Navbar
+   - Product List
+   - - Product Item
+   - - Product Details
+   - Cart
+   - - Form
+   - Submit page
 
 ### Services
 
