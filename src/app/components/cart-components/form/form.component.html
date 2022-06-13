@@ -46,12 +46,16 @@
         type="text"
         class="form-control"
         name="city"
+        minlength="3"
         [(ngModel)]="customer.city"
         required
         #city="ngModel"
       />
       <div class="error" *ngIf="city.invalid && city.touched">
         <div *ngIf="city.errors?.['required']">Please enter valid city</div>
+        <div *ngIf="city.errors?.['minlength']">
+          Must have at least 3 characters
+        </div>
       </div>
     </div>
     <div class="col-md-4">
@@ -77,12 +81,19 @@
         type="text"
         class="form-control"
         name="inputZip"
+        placeholder="10001"
+        minlength="5"
+        maxlength="5"
         [(ngModel)]="customer.zip"
         #zip="ngModel"
         required
       />
       <div class="error" *ngIf="zip.invalid && zip.touched">
-        <div *ngIf="zip.errors?.['required']">Please enter your zip</div>
+        <div
+          *ngIf="zip.errors?.['required'] || zip.errors?.['minlength'] || zip.errors?.['maxlength']"
+        >
+          Please enter a valid zip
+        </div>
       </div>
     </div>
     <div class="col-md-6">
@@ -93,6 +104,7 @@
         minlength="15"
         maxlength="16"
         name="cardNumber"
+        placeholder="1234123412341234"
         [(ngModel)]="customer.cardNumber"
         #card="ngModel"
         required
@@ -112,14 +124,18 @@
         type="text"
         class="form-control"
         name="expDate"
+        minlength="7"
+        maxlength="7"
         placeholder="mm/yyyy"
         [(ngModel)]="customer.expDate"
         #exp="ngModel"
         required
       />
       <div class="error" *ngIf="exp.invalid && exp.touched">
-        <div *ngIf="exp.errors?.['required']">
-          Please enter valid card number
+        <div
+          *ngIf="exp.errors?.['required'] || exp.errors?.['minlength'] || exp.errors?.['maxlength']"
+        >
+          Please enter valid expiration date
         </div>
       </div>
     </div>
@@ -129,12 +145,16 @@
         type="text"
         class="form-control"
         name="cvv"
+        minlength="3"
+        maxlength="4"
         [(ngModel)]="customer.cvv"
         #cvv="ngModel"
       />
       <div class="error" *ngIf="cvv.invalid && cvv.touched">
-        <div *ngIf="cvv.errors?.['required']">
-          Please enter valid card number
+        <div
+          *ngIf="cvv.errors?.['required'] || cvv.errors?.['minlength'] || cvv.errors?.['maxlength']"
+        >
+          Please enter valid cvv.
         </div>
       </div>
     </div>
