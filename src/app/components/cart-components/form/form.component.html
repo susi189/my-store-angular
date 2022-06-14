@@ -67,7 +67,7 @@
         #state="ngModel"
         required
       >
-        <option selected>Choose*</option>
+        <option selected [disabled]="disabled">Choose</option>
         <option>NY</option>
         <option>NJ</option>
       </select>
@@ -82,16 +82,14 @@
         class="form-control"
         name="inputZip"
         placeholder="10001"
-        minlength="5"
         maxlength="5"
+        pattern="[0-9]{5}"
         [(ngModel)]="customer.zip"
         #zip="ngModel"
         required
       />
       <div class="error" *ngIf="zip.invalid && zip.touched">
-        <div
-          *ngIf="zip.errors?.['required'] || zip.errors?.['minlength'] || zip.errors?.['maxlength']"
-        >
+        <div *ngIf="zip.errors?.['required'] || zip.errors?.['pattern']">
           Please enter a valid zip
         </div>
       </div>
@@ -101,20 +99,17 @@
       <input
         type="text"
         class="form-control"
-        minlength="15"
         maxlength="16"
         name="cardNumber"
+        pattern="[0-9]{15,16}"
         placeholder="1234123412341234"
         [(ngModel)]="customer.cardNumber"
         #card="ngModel"
         required
       />
       <div class="error" *ngIf="card.invalid && card.touched">
-        <div *ngIf="card.errors?.['required']">
+        <div *ngIf="card.errors?.['required'] || card.errors?.['pattern'] ">
           Please enter valid card number
-        </div>
-        <div *ngIf="card.errors?.['minlength']">
-          The card must have at least 15 characters
         </div>
       </div>
     </div>
@@ -124,18 +119,16 @@
         type="text"
         class="form-control"
         name="expDate"
-        minlength="7"
         maxlength="7"
         placeholder="mm/yyyy"
+        pattern="(0[0-1]|1[1-9])/20([0-9]{2})\b"
         [(ngModel)]="customer.expDate"
         #exp="ngModel"
         required
       />
       <div class="error" *ngIf="exp.invalid && exp.touched">
-        <div
-          *ngIf="exp.errors?.['required'] || exp.errors?.['minlength'] || exp.errors?.['maxlength']"
-        >
-          Please enter valid expiration date
+        <div *ngIf="exp.errors?.['required'] || exp.errors?.['pattern']">
+          Please enter valid expiration date (mm/yyyy)
         </div>
       </div>
     </div>
@@ -145,15 +138,13 @@
         type="text"
         class="form-control"
         name="cvv"
-        minlength="3"
         maxlength="4"
+        pattern="[0-9]{3,4}"
         [(ngModel)]="customer.cvv"
         #cvv="ngModel"
       />
       <div class="error" *ngIf="cvv.invalid && cvv.touched">
-        <div
-          *ngIf="cvv.errors?.['required'] || cvv.errors?.['minlength'] || cvv.errors?.['maxlength']"
-        >
+        <div *ngIf="cvv.errors?.['required'] || cvv.errors?.['pattern']">
           Please enter valid cvv.
         </div>
       </div>
