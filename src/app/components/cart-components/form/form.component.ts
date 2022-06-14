@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  FormControl,
-} from '@angular/forms';
 
 import { Customer } from 'src/models/Customer';
 import { CustomerInfoService } from 'src/app/services/customer-info.service';
