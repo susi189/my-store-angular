@@ -15,7 +15,6 @@ export class FormComponent implements OnInit {
 
   constructor(
     private router: Router,
-
     private customerInfo: CustomerInfoService
   ) {
     this.customer = {

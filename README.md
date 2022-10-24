@@ -4,6 +4,8 @@
 
 This project was built as part of the Udacity Nanodegree program. The goal of the project was to build a storefront using Angular CLI.
 
+You can see the final result here: [MyStore](https://susi189.github.io/my-store-angular/)
+
 ## Setup
 
 To be able to run this project you need to have [Node.js](https://nodejs.org/en/download/) installed on your local machine.
