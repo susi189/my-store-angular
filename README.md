@@ -1,3 +1,5 @@
+![Project Image](./project.png)
+
 # MyStore - Frontend build with Angular
 
 ## Project Overview
